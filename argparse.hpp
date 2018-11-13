@@ -258,6 +258,11 @@ namespace argparse {
                 std::exit(EXIT_FAILURE);
             }
 
+            auto passed_positonal_count = static_cast<std::size_t>(std::end(args) - itr);
+            if (_positional.size() != passed_positonal_count) {
+                std::cerr << "required positional arguments is " << _positional.size() << ". but " << passed_positonal_count << " was passed." << std::endl;
+                std::exit(EXIT_FAILURE);
+            }
             for (const auto& i : _positional) {
                 parsed[remove_hyphen(i.name[0])].emplace_back(*(itr++));
             }
