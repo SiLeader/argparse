@@ -25,7 +25,7 @@
 
 namespace argparse {
     namespace detail {
-        inline std::vector<std::string> split(const std::string& s, char delim) {
+        inline std::vector<std::string> split(const std::string &s, char delim) {
             std::vector<std::string> elems;
             std::string item;
             for (char ch : s) {
@@ -55,93 +55,113 @@ namespace argparse {
         std::vector<std::string> _command_line;
 
     public:
-        Arguments(const std::unordered_map<std::string, std::vector<std::string>>& arguments, const std::string& program, const std::vector<std::string>& command_line)
-                : _arguments(arguments), _program(program), _command_line(command_line) {
-        }
+        Arguments(const std::unordered_map<std::string, std::vector<std::string>> &arguments,
+                  const std::string &program, const std::vector<std::string> &command_line)
+            : _arguments(arguments)
+            , _program(program)
+            , _command_line(command_line) {}
 
     public:
-        const std::string& program() const noexcept {
-            return _program;
-        }
+        const std::string &program() const noexcept { return _program; }
 
-        bool get(const std::string& kw, signed char& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, signed char &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = static_cast<signed char>(std::stoi(_arguments.at(kw)[index]));
             return true;
         }
-        bool get(const std::string& kw, unsigned char& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, unsigned char &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = static_cast<unsigned char>(std::stoi(_arguments.at(kw)[index]));
             return true;
         }
-        bool get(const std::string& kw, signed short& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, signed short &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = static_cast<signed short>(std::stoi(_arguments.at(kw)[index]));
             return true;
         }
-        bool get(const std::string& kw, unsigned short& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, unsigned short &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = static_cast<unsigned short>(std::stoi(_arguments.at(kw)[index]));
             return true;
         }
-        bool get(const std::string& kw, signed int& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, signed int &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = std::stoi(_arguments.at(kw)[index]);
             return true;
         }
-        bool get(const std::string& kw, unsigned int& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, unsigned int &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = static_cast<unsigned int>(std::stoul(_arguments.at(kw)[index]));
             return true;
         }
-        bool get(const std::string& kw, signed long& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, signed long &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = std::stol(_arguments.at(kw)[index]);
             return true;
         }
-        bool get(const std::string& kw, unsigned long& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, unsigned long &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = std::stoul(_arguments.at(kw)[index]);
             return true;
         }
-        bool get(const std::string& kw, signed long long& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, signed long long &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = std::stoll(_arguments.at(kw)[index]);
             return true;
         }
-        bool get(const std::string& kw, unsigned long long& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, unsigned long long &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = std::stoull(_arguments.at(kw)[index]);
             return true;
         }
-        bool get(const std::string& kw, std::string& buf, std::size_t index = 0) const {
-            if (_arguments.count(kw) == 0) return false;
-            if (_arguments.at(kw).size() <= index) return false;
+        bool get(const std::string &kw, std::string &buf, std::size_t index = 0) const {
+            if (_arguments.count(kw) == 0)
+                return false;
+            if (_arguments.at(kw).size() <= index)
+                return false;
             buf = _arguments.at(kw)[index];
             return true;
         }
-        bool has(const std::string& kw) const {
-            return _arguments.count(kw) != 0;
-        }
+        bool has(const std::string &kw) const { return _arguments.count(kw) != 0; }
 
-        bool get(const std::string& kw, std::vector<std::string>& buf) const {
-            if (_arguments.count(kw) == 0) return false;
+        bool get(const std::string &kw, std::vector<std::string> &buf) const {
+            if (_arguments.count(kw) == 0)
+                return false;
             buf = _arguments.at(kw);
             return true;
         }
 
-        template <class DataT>
-        DataT get(const std::string& kw, std::size_t index = 0) const {
+        template <class DataT> DataT get(const std::string &kw, std::size_t index = 0) const {
             DataT buf;
             if (get(kw, buf, index)) {
                 return buf;
@@ -150,16 +170,15 @@ namespace argparse {
         }
 
         template <class DataT>
-        DataT safeGet(const std::string& kw, const DataT& defaultValue, std::size_t index = 0) const {
+        DataT safeGet(const std::string &kw, const DataT &defaultValue,
+                      std::size_t index = 0) const {
             if (has(kw)) {
                 return get<DataT>(kw, index);
             }
             return defaultValue;
         }
 
-        const std::vector<std::string>& getCommandLine() const noexcept {
-            return _command_line;
-        }
+        const std::vector<std::string> &getCommandLine() const noexcept { return _command_line; }
     };
 
     class ArgumentParser {
@@ -177,17 +196,21 @@ namespace argparse {
         std::string _epilog;
 
     public:
-        explicit ArgumentParser(std::string prog, std::string description = "", std::string epilog = "")
-                : _program(std::move(prog)), _description(std::move(description)), _epilog(std::move(epilog)) {
+        explicit ArgumentParser(std::string prog, std::string description = "",
+                                std::string epilog = "")
+            : _program(std::move(prog))
+            , _description(std::move(description))
+            , _epilog(std::move(epilog)) {
             addArgument({"--help", "-h"}, "show this help", ArgumentType::StoreTrue);
         }
 
     public:
-        Arguments parseArgs(int argc, char const* const* const argv) const {
+        Arguments parseArgs(int argc, char const *const *const argv,
+                            bool allowEmptyPositionalArguments = false) const {
             std::string program = argv[0];
             std::vector<std::string> args(argv + 1, argv + argc);
 
-            auto remove_hyphen = [](const std::string& str) -> std::string {
+            auto remove_hyphen = [](const std::string &str) -> std::string {
                 for (std::size_t i = 0; i < str.size(); ++i) {
                     if (str[i] != '-') {
                         return std::string(std::begin(str) + i, std::end(str));
@@ -199,7 +222,7 @@ namespace argparse {
             {
                 std::vector<std::string> a;
                 a.reserve(args.size() * 2);
-                for (auto& arg : args) {
+                for (auto &arg : args) {
                     auto ss = detail::split(arg, '=');
                     a.insert(std::end(a), std::begin(ss), std::end(ss));
                 }
@@ -219,9 +242,11 @@ namespace argparse {
 
                 // check keyword arguments;
                 for (; itr != std::end(args); ++itr) {
-                    auto kw_itr = std::find_if(kw_begin, kw_end, [&itr](const _argument_info& info) {
-                        return std::find(std::begin(info.name), std::end(info.name), *itr) != std::end(info.name);
-                    });
+                    auto kw_itr =
+                        std::find_if(kw_begin, kw_end, [&itr](const _argument_info &info) {
+                            return std::find(std::begin(info.name), std::end(info.name), *itr) !=
+                                   std::end(info.name);
+                        });
                     if (kw_itr == kw_end) {
                         if (itr->front() == '-') {
                             std::cerr << "cannot find keyword argument: " << *itr << std::endl;
@@ -234,7 +259,8 @@ namespace argparse {
                     switch (kw_itr->type) {
                     case ArgumentType::Store: {
                         if (itr + 1 == std::end(args)) {
-                            std::cerr << "keyword argument " << name << " must have value." << std::endl;
+                            std::cerr << "keyword argument " << name << " must have value."
+                                      << std::endl;
                             std::exit(EXIT_FAILURE);
                         }
                         auto value = *(++itr);
@@ -254,16 +280,23 @@ namespace argparse {
             }
 
             if (_positional.empty() && itr != std::end(args)) {
-                std::cerr << "no positional arguments is set. but some positional arguments passed." << std::endl;
+                std::cerr << "no positional arguments is set. but some positional "
+                             "arguments passed."
+                          << std::endl;
                 std::exit(EXIT_FAILURE);
             }
 
-            auto passed_positonal_count = static_cast<std::size_t>(std::end(args) - itr);
-            if (_positional.size() != passed_positonal_count) {
-                std::cerr << "required positional arguments is " << _positional.size() << ". but " << passed_positonal_count << " was passed." << std::endl;
-                std::exit(EXIT_FAILURE);
+            auto passed_positional_count = static_cast<std::size_t>(std::end(args) - itr);
+            if (!allowEmptyPositionalArguments) {
+                if (_positional.size() != passed_positional_count) {
+                    std::cerr << "required positional arguments is " << _positional.size()
+                              << ". but " << passed_positional_count << " was passed." << std::endl;
+                    std::exit(EXIT_FAILURE);
+                }
             }
-            for (const auto& i : _positional) {
+            for (const auto &i : _positional) {
+                if (itr == std::end(args))
+                    break;
                 parsed[remove_hyphen(i.name[0])].emplace_back(*(itr++));
             }
 
@@ -271,8 +304,10 @@ namespace argparse {
         }
 
     public:
-        void addArgument(const std::vector<std::string>& name, const std::string& help, ArgumentType type = ArgumentType::Store) {
-            if (name.empty()) return;
+        void addArgument(const std::vector<std::string> &name, const std::string &help,
+                         ArgumentType type = ArgumentType::Store) {
+            if (name.empty())
+                return;
 
             _argument_info info;
 
@@ -297,7 +332,7 @@ namespace argparse {
                     ss << "...";
                 }
             }
-            for (const auto& p : _positional) {
+            for (const auto &p : _positional) {
                 auto n = p.name[0];
                 std::transform(std::begin(n), std::end(n), std::begin(n), ::toupper);
                 ss << " " << n;
@@ -313,9 +348,9 @@ namespace argparse {
                 std::size_t most_long_length = 0;
                 std::vector<std::tuple<std::string, std::string>> name_helps;
                 name_helps.reserve(_keyword.size());
-                for (const auto& k : _keyword) {
+                for (const auto &k : _keyword) {
                     std::string name;
-                    for (const auto& n : k.name) {
+                    for (const auto &n : k.name) {
                         name += n;
                         if (k.type == ArgumentType::Store) {
                             name += " VALUE";
@@ -331,11 +366,12 @@ namespace argparse {
                     }
                 }
 
-                for (const auto& nh : name_helps) {
+                for (const auto &nh : name_helps) {
                     std::string name, help;
                     std::tie(name, help) = nh;
 
-                    ss << "  " << std::setw(static_cast<int>(most_long_length)) << std::left << name << " : " << help << "\n";
+                    ss << "  " << std::setw(static_cast<int>(most_long_length)) << std::left << name
+                       << " : " << help << "\n";
                 }
                 ss << "\n";
             }
@@ -346,9 +382,9 @@ namespace argparse {
                 std::size_t most_long_length = 0;
                 std::vector<std::tuple<std::string, std::string>> name_helps;
                 name_helps.reserve(_positional.size());
-                for (const auto& p : _positional) {
+                for (const auto &p : _positional) {
                     std::string name;
-                    for (const auto& n : p.name) {
+                    for (const auto &n : p.name) {
                         name += n;
                         name += ", ";
                     }
@@ -361,11 +397,12 @@ namespace argparse {
                     }
                 }
 
-                for (const auto& nh : name_helps) {
+                for (const auto &nh : name_helps) {
                     std::string name, help;
                     std::tie(name, help) = nh;
 
-                    ss << "  " << std::setw(static_cast<int>(most_long_length)) << std::left << name << " : " << help << "\n";
+                    ss << "  " << std::setw(static_cast<int>(most_long_length)) << std::left << name
+                       << " : " << help << "\n";
                 }
                 ss << "\n";
             }
@@ -376,10 +413,8 @@ namespace argparse {
             ss << std::flush;
             return ss.str();
         }
-        void printHelp(std::ostream& os = std::cout) const {
-            os << help() << std::flush;
-        }
+        void printHelp(std::ostream &os = std::cout) const { os << help() << std::flush; }
     };
 } // namespace argparse
 
-#endif //PYLIKE_UTILITY_ARGPARSE_HPP
+#endif // PYLIKE_UTILITY_ARGPARSE_HPP
